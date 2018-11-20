@@ -93,14 +93,8 @@ for result in results:
         news_title=news_title_img[1]['alt'] 
     mars_news[news_title]=news_summary
     nasa_mars_news.append(mars_news)
-
+print(nasa_mars_news)
 browser.quit()
-
-
-# In[10]:
-
-
-nasa_mars_news
 
 
 # ### JPL Mars Space Images - Featured Image
@@ -123,7 +117,7 @@ time.sleep(1)
 # In[12]:
 
 
-soup.find('footer')
+print(soup.find('footer'))
 
 
 # In[13]:
@@ -141,7 +135,7 @@ soup=BeautifulSoup(browser.html,'html.parser')
 # In[15]:
 
 
-soup.find_all('a', class_='button')
+print(soup.find_all('a', class_='button'))
 
 
 # In[16]:
@@ -181,7 +175,7 @@ nasa_mars_featured_image["nasa_mars_featured_image_url"]=nasa_mars_featured_imag
 # In[20]:
 
 
-nasa_mars_featured_image
+print(nasa_mars_featured_image)
 
 
 # In[21]:
@@ -232,7 +226,7 @@ twitter_mars_weather["mars_weather"]=mars_weather
 # In[25]:
 
 
-twitter_mars_weather
+print(twitter_mars_weather)
 
 
 # In[26]:
@@ -310,13 +304,13 @@ mars_space_facts_url = url[4]
 
 
 tables = pd.read_html(mars_space_facts_url)
-tables
+print(tables)
 
 
 # In[32]:
 
 
-type(tables)
+print(type(tables))
 
 
 # In[37]:
@@ -329,7 +323,7 @@ mars_facts["table"]=tables
 # In[38]:
 
 
-mars_facts
+print(mars_facts)
 
 
 # In[44]:
@@ -337,7 +331,6 @@ mars_facts
 
 df=tables[0]
 df.columns=['Metric','Measurement']
-df
 
 
 # In[34]:
@@ -356,8 +349,6 @@ df.index
 
 
 html_table = df.to_html()
-html_table
-
 
 # In[46]:
 
@@ -367,14 +358,11 @@ html_table=html_table.replace('\n', '')
 
 # In[47]:
 
-
-html_table
-
-
+print(html_table)
 # In[48]:
 
 
-type(html_table)
+print(type(html_table))
 
 
 # In[49]:
@@ -388,7 +376,7 @@ mars_fact_html_table={}
 
 mars_fact_html_table["html_table"]=html_table
 
-
+print(mars_fact_html_table)
 # In[51]:
 
 
@@ -405,7 +393,7 @@ mars_facts["table_url"]="table.html"
 # In[53]:
 
 
-mars_facts
+print(mars_facts)
 
 
 # ## Step 2 - MongoDB and Flask Application
@@ -450,7 +438,7 @@ db.table_nasa_mars_featured_image.insert_one(nasa_mars_featured_image)
 # In[61]:
 
 
-list(db.table_nasa_mars_featured_image.find())
+print(list(db.table_nasa_mars_featured_image.find()))
 
 
 # ### Mars Weather
@@ -467,7 +455,7 @@ db.table_twitter_mars_weather.insert_one(twitter_mars_weather)
 # In[60]:
 
 
-list(db.table_twitter_mars_weather.find())
+print(list(db.table_twitter_mars_weather.find()))
 
 
 # ### Mars Facts
@@ -482,7 +470,7 @@ db.table_mars_facts.insert_one(mars_facts)
 # In[63]:
 
 
-list(db.table_mars_facts.find())
+print(list(db.table_mars_facts.find()))
 
 
 # ### Mars Hemispheres
@@ -499,7 +487,7 @@ db.table_nasa_mars_hemisphere_image_urls.insert_many(nasa_mars_hemisphere_image_
 # In[65]:
 
 
-list(db.table_nasa_mars_hemisphere_image_urls.find())
+print(list(db.table_nasa_mars_hemisphere_image_urls.find()))
 
 
 # ### NASA Mars News
@@ -516,19 +504,19 @@ db.table_nasa_mars_news.insert_many(nasa_mars_news)
 # In[67]:
 
 
-list(db.table_nasa_mars_news.find())
+print(list(db.table_nasa_mars_news.find()))
 
 
 # In[74]:
 
 
-db.list_collection_names()
+print(db.list_collection_names())
 
 
 # In[69]:
 
 
-client.list_database_names()
+print(client.list_database_names())
 
 
 # In[70]:
