@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>NASA Mars News and Photos</h1>
+            <p><a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/scrape" role="button">Get Scraping!</a></p>
+
+        </div>
+
+            
+					<div class="container">
+						<div class="row">
+							{% for image in image_urls%}
+							<div class="col">
+								<picture>
+									<img src={{image.image_url}} class="img-fluid img-thumbnail">
+								</picture>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+            
+
+    </div>
+
+</body>
+
+</html>
