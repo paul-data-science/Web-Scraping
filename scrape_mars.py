@@ -185,19 +185,15 @@ def nasa_mars_hemisphere():
 
 # Main function
 def startScraping():
-    nasa_mars_hemisphere()
-    print('DONE: nasa_mars_hemisphere()')
-    nasa_mars_facts_table()
-    print('DONE: nasa_mars_facts_table()')
-    nasa_mars_weather()
-    print('DONE: nasa_mars_weather()')
-    nasa_mars_feature_image()
-    print('DONE: nasa_mars_feature_image()')
-    nasa_mars_news()
-    print('DONE: nasa_mars_news()')
+    print('DONE: ', nasa_mars_hemisphere())
+    print('DONE: ', nasa_mars_facts_table())
+    print('DONE: ', nasa_mars_weather())
+    print('DONE: ', nasa_mars_feature_image())
+    print('DONE: ', nasa_mars_news())
+    print('FINISHED')
 
 
 startScraping()
-print('FINISHED')
+
 #get_ipython().system('jupyter nbconvert --to=python mission_to_mars-Copy1.ipynb')
 
