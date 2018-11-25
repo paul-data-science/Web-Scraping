@@ -9,6 +9,7 @@ from splinter import Browser
 import pymongo
 import time
 
+
 # Establish a connection to MongoDB with PyMongo you use the MongoClient class
 conn = 'mongodb://localhost:27017'
 client = pymongo.MongoClient(conn)
@@ -114,8 +115,7 @@ def nasa_mars_weather():
     # NOTE: Twitter users were disrupting the Mars Weather Tweets which 
     # comingled with the Mars Weather information. This made it difficult to
     # only scrape latest Mars Weather tweet!
-    # So, had to come up with string keyword matching solution that looped through each tweet until
-    # matched Mars Weather info.
+    # So, had to come up with string keyword matching solution.
     for result in mars_weather:
         # Reference: https://stackoverflow.com/questions/3271478/check-list-of-words-in-another-string
         if all(word in result.p.text for word in word_list):
@@ -190,11 +190,11 @@ def nasa_mars_hemisphere():
 
 # Main function
 def startScraping():
-    print('DONE: ', nasa_mars_hemisphere())
-    print('DONE: ', nasa_mars_facts_table())
+    #print('DONE: ', nasa_mars_hemisphere())
+    #print('DONE: ', nasa_mars_facts_table())
     print('DONE: ', nasa_mars_weather())
-    print('DONE: ', nasa_mars_feature_image())
-    print('DONE: ', nasa_mars_latest_news())
+    #print('DONE: ', nasa_mars_feature_image())
+    #print('DONE: ', nasa_mars_latest_news())
     print('FINISHED')
 
 

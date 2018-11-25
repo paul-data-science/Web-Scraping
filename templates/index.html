@@ -13,48 +13,51 @@
 
     <div class="container">
         <div class="jumbotron">
-            <h1>NASA Mars News and Photos</h1>
-            <p><a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/scrape" role="button">Get Scraping!</a></p>
+            <h1><b>NASA Mars Latest News and Photos<b></h1>
+            <p><a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/scrape" role="button">Scrape for Updates</a></p>
 
         </div>
 
             
 					<div class="container">
 						<div class="row">
+    						{% for record in news%}
+            				<div class="col-xs-4">
+            				<h1>Mars Latest News</h1>
+                				<h3>{{record.news_title}}</h3>
+                				<h4><p><b>{{record.news_p}}<b></p><h4>           				
+            				</div>
+                			{% endfor %}
+                			
     						{% for w in weather%}
-    						<div class="col">
-                				<h4>Mars Latest Weather Report</h4>
-            					<p>{{w.mars_weather}}</p>
+    						<div class="col-xs-4">
+                				<h1>Current Weather on Mars</h1>
+            					<h4><p><b>{{w.mars_weather}}</b></p><h4>
             					
             				</div>
             				{% endfor %}
             				
             				
-            				<div class="col">
+            				<div class="col-xs-4">
+                				<h1>Mars Facts</h1>
                 				{% for tb in facts_html%}         				
             					{{tb.nasa_mars_facts_html | safe}}
             					{% endfor %}
             				</div>
             				
             				{% for i in image%}
-            				<div class="col">
-            					<h3>Featured Mars Image - {{i.nasa_mars_featured_image_title}}</h3>
+            				<div class="col-xs-12">
+            					<h3>Featured Mars Image - <b>{{i.nasa_mars_featured_image_title}}<b></h3>
             					<picture>
-                					<img src={{i.nasa_mars_featured_image_url}} class="img-fluid">
+                					<img src={{i.nasa_mars_featured_image_url}} class="img-fluid img-thumbnail">
             					</picture>
             				</div>
             				{% endfor %}
+            			</div>
             				
-            				{% for record in news%}
-            				<div class="col">
-            				<h4>Mars Latest News</h4>
-            					<h3>{{record.news_title}}</h3>
-            					<p>{{record.news_p}}</p>
-            				</div>
-                			{% endfor %}
-                			
+         				<div class="row">
                 			{% for img in image_urls%}
-							<div class="col">
+							<div class="col-xs-6">
 								<picture>
 									<img src={{img.image_url}} class="img-fluid img-thumbnail">
 								</picture>
