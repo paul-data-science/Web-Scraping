@@ -21,10 +21,42 @@
             
 					<div class="container">
 						<div class="row">
-							{% for image in image_urls%}
+    						{% for w in weather%}
+    						<div class="col">
+                				<h4>Mars Latest Weather Report</h4>
+            					<p>{{w.mars_weather}}</p>
+            					
+            				</div>
+            				{% endfor %}
+            				
+            				
+            				<div class="col">
+                				{% for tb in facts_html%}         				
+            					{{tb.nasa_mars_facts_html | safe}}
+            					{% endfor %}
+            				</div>
+            				
+            				{% for i in image%}
+            				<div class="col">
+            					<h3>Featured Mars Image - {{i.nasa_mars_featured_image_title}}</h3>
+            					<picture>
+                					<img src={{i.nasa_mars_featured_image_url}} class="img-fluid">
+            					</picture>
+            				</div>
+            				{% endfor %}
+            				
+            				{% for record in news%}
+            				<div class="col">
+            				<h4>Mars Latest News</h4>
+            					<h3>{{record.news_title}}</h3>
+            					<p>{{record.news_p}}</p>
+            				</div>
+                			{% endfor %}
+                			
+                			{% for img in image_urls%}
 							<div class="col">
 								<picture>
-									<img src={{image.image_url}} class="img-fluid img-thumbnail">
+									<img src={{img.image_url}} class="img-fluid img-thumbnail">
 								</picture>
 							</div>
 							{% endfor %}

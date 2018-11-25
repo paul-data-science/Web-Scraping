@@ -57,34 +57,40 @@ def nasa_mars_news():
     # Insert into MongoDB
     # Drop/Create 'table_nasa_news' (if it does not exist)
     db=nasa_mars_db()
-    db.table_nasa_mars_news.drop()
+    #db.table_nasa_mars_news.drop()
+    db.table_nasa_mars_latest_news.drop()
     # Extract title text
     title = soup.title.text
     print(title)
     # Examine the results, then determine element that contains news info
     # results are returned as an iterable list
     #nasa_mars_news = []
-    results = soup.find_all('div', class_="image_and_description_container")
-    for result in results:
-        nasa_mars_news = {}
-        news_link=result.find('a')
-        #print(news_link.text)
-        news_summary=news_link.find('div', class_="rollover_description_inner").text.strip('\n')
-        try:
-            news_title=news_link.h3.text
-        # When H3 tag not available then use Alt tag
-        except AttributeError:
-            news_title_img=news_link.find_all('img',alt=True)
-            news_title=news_title_img[1]['alt'] 
-        nasa_mars_news[news_title]=news_summary
-        # Insert 'nasa_mars_news' into database document collections table
-        db.table_nasa_mars_news.insert_one(nasa_mars_news)
-        print("COMPLETED SINGLE INSERT: ", list(db.table_nasa_mars_hemisphere_image_urls.find()))
-        #nasa_mars_news.append(mars_news)
+#    results = soup.find('div', class_="image_and_description_container")
+#    for result in results:
+#        nasa_mars_news = {}
+#        news_link=result.find('a')
+#        print(news_link.text)
+#        print(news_link)
+    news_link=soup.find('div', class_="image_and_description_container")
+    news_summary=news_link.find('div', class_="rollover_description_inner").text.strip('\n')
+    try:
+        news_title=news_link.h3.text
+    # When H3 tag not available then use Alt tag
+    except AttributeError:
+        news_title_img=news_link.find_all('img',alt=True)
+        news_title=news_title_img[1]['alt']
+    nasa_mars_news = {}
+    nasa_mars_news["title"]=news_title
+    nasa_mars_news["news_p"]=news_summary
+    print(nasa_mars_news)
+    # Insert 'nasa_mars_news' into database document collections table
+    db.table_nasa_mars_latest_news.insert_one(nasa_mars_news)
+    print("COMPLETED SINGLE INSERT: ", list(db.table_nasa_mars_latest_news.find()))
+    #nasa_mars_news.append(mars_news)
     #print(nasa_mars_news)
-    print("FINISHED INSERTION: ", list(db.table_nasa_mars_hemisphere_image_urls.find()))
+    #print("FINISHED INSERTION: ", list(db.table_nasa_mars_latest_news.find()))
     browser.quit()
-    return db.table_nasa_mars_news
+    return db.table_nasa_mars_latest_news
     
 # ### JPL Mars Space Images - Featured Image
 # Retrieve 'JPL Mars Space Images - Featured Image' page with splinter module

@@ -51,36 +51,33 @@ def createSoup(i):
 
 # ### NASA Mars News
 # Retrieve 'NASA Mars News' page with splinter module
-def nasa_mars_news():
+def nasa_mars_latest_news():
     soup, browser, first_url = createSoup(1)
     # Insert into MongoDB
     # Drop/Create 'table_nasa_mars_news' (if it does not exist)
     db=nasa_mars_db()
-    db.table_nasa_mars_news.drop()
-    # Examine the results, then determine element that contains news info
-    # results are returned as an iterable list
-    results = soup.find_all('div', class_="image_and_description_container")
-    for result in results:
-        nasa_mars_news = {}
-        news_link=result.find('a')
-        #print(news_link.text)
-        news_summary=news_link.find('div', class_="rollover_description_inner").text.strip('\n')
-        try:
-            news_title=news_link.h3.text
-        # When H3 tag not available then use Alt tag
-        except AttributeError:
-            news_title_img=news_link.find_all('img',alt=True)
-            news_title=news_title_img[1]['alt'] 
-        nasa_mars_news[news_title]=news_summary
-        # Insert 'nasa_mars_news' into database document collections table
-        db.table_nasa_mars_news.insert_one(nasa_mars_news)
+    db.table_nasa_mars_latest_news.drop()
+    news_link=soup.find('div', class_="image_and_description_container")
+    news_summary=news_link.find('div', class_="rollover_description_inner").text.strip('\n')
+    try:
+        news_title=news_link.h3.text
+    # When H3 tag not available then use Alt tag
+    except AttributeError:
+        news_title_img=news_link.find_all('img',alt=True)
+        news_title=news_title_img[1]['alt']
+    nasa_mars_latest_news = {}
+    nasa_mars_latest_news["news_title"]=news_title
+    nasa_mars_latest_news["news_p"]=news_summary
+    # Insert 'nasa_mars_news' into database document collections table
+    db.table_nasa_mars_latest_news.insert_one(nasa_mars_latest_news)
     browser.quit()
-    return db.table_nasa_mars_news
+    return db.table_nasa_mars_latest_news
     
 # ### JPL Mars Space Images - Featured Image
 # Retrieve 'JPL Mars Space Images - Featured Image' page with splinter module
 def nasa_mars_feature_image():
     soup, browser, first_url = createSoup(2)
+    image_title=soup.find('h1', class_="media_feature_title").text
     time.sleep(1)
     browser.click_link_by_id('full_image')
     try:
@@ -93,6 +90,7 @@ def nasa_mars_feature_image():
     nasa_mars_featured_image_url=browser.url
     # (Re)Create dict()
     nasa_mars_featured_image={}
+    nasa_mars_featured_image["nasa_mars_featured_image_title"]=image_title
     nasa_mars_featured_image["nasa_mars_featured_image_url"]=nasa_mars_featured_image_url
     # Insert into MongoDB
     # Drop/Create 'table_nasa_mars_featured_image'
@@ -141,7 +139,7 @@ def nasa_mars_facts_table():
     df.columns=['Metric','Measurement']
     df.set_index('Metric',inplace=True)
     df.index
-    nasa_mars_facts['nasa_mars_facts_html']=df.to_html()
+    nasa_mars_facts["nasa_mars_facts_html"]=df.to_html()
     #nasa_mars_facts_html_table=nasa_mars_facts_html_table.replace('\n', '')
     # Insert into MongoDB
     db=nasa_mars_db()    
@@ -174,7 +172,7 @@ def nasa_mars_hemisphere():
         download_url=next_soup.find_all('div',class_='downloads')
         for download in download_url:
             image_url=download.a['href']
-            title_image_url['image_url']=image_url
+            title_image_url["image_url"]=image_url
         # Insert 'title_image_url' into database document collections table
         db.table_nasa_mars_hemisphere_image_urls.insert_one(title_image_url)
         # Go back to initial page with splinter module to click on next div item
@@ -189,7 +187,7 @@ def startScraping():
     print('DONE: ', nasa_mars_facts_table())
     print('DONE: ', nasa_mars_weather())
     print('DONE: ', nasa_mars_feature_image())
-    print('DONE: ', nasa_mars_news())
+    print('DONE: ', nasa_mars_latest_news())
     print('FINISHED')
 
 

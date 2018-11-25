@@ -15,12 +15,11 @@ db = client.nasa_mars_landing_db
 
 @app.route('/')
 def home_page():
-    news = db.table_nasa_mars_news.find()
+    news=db.table_nasa_mars_latest_news.find()
     image = db.table_nasa_mars_featured_image.find()
     weather = db.table_twitter_mars_weather.find()
-    facts_html = db.table_mars_facts.find()
+    facts_html = db.table_mars_facts.find() 
     image_urls = db.table_nasa_mars_hemisphere_image_urls.find()
-    #print(list(image_urls))
     return render_template('index.html', news=news, image=image, weather=weather,facts_html=facts_html, image_urls=image_urls)
 
 @app.route('/scrape')
