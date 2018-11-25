@@ -149,9 +149,9 @@
 
 <div class="col-xs-12">
 
-### Featured Mars Image - **Hypothetical 'Rejuvenated' Planets (Artist's Concept)**
+### Featured Mars Image - **High-Resolution Self-Portrait by Curiosity Rover Arm Camera**
 
-****<picture>![](https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA19346_hires.jpg)</picture> ****</div>
+****<picture>![](https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA16239_hires.jpg)</picture> ****</div>
 
 ****</div>
 
@@ -168,7 +168,3 @@
 <div class="col-xs-6"><picture>![](http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg)</picture> </div>
 
 </div>
-
-******</div>
-
-****</div>
