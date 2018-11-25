@@ -1,5 +1,5 @@
 # Web Scraping Project - NASA Mars
-(Below is sample of what 'scrape_mars.py' can do!)
+**** Below is sample of what 'scrape_mars.py' can do! ****
 
 # **NASA Mars Latest News and Photos**
 
