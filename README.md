@@ -5,19 +5,7 @@
 
 # **NASA Mars Latest News and Photos**
 
-****
-
 [Scrape for Updates](http://127.0.0.1:5000/scrape)
-
-****</div>
-
-****
-
-<div class="container">
-
-<div class="row">
-
-<div class="col-xs-4">
 
 # Mars Latest News
 
@@ -27,21 +15,12 @@
 
 **In just over 24 hours, NASA's InSight lander will complete its seven-month journey to the Red Planet.**
 
-</div>
-
-****
-
-<div class="col-xs-4">
-
 # Current Weather on Mars
 
 #### 
 
 **Sol 2238 (2018-11-22), high -2C/28F, low -69C/-92F, pressure at 8.53 hPa, daylight 06:27-18:43**
 
-</div>
-
-<div class="col-xs-4">
 
 # Mars Facts
 
@@ -147,24 +126,11 @@
 
 </div>
 
-<div class="col-xs-12">
-
 ### Featured Mars Image - **High-Resolution Self-Portrait by Curiosity Rover Arm Camera**
 
-****<picture>![](https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA16239_hires.jpg)</picture> ****</div>
+![](https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA16239_hires.jpg)
 
-****</div>
-
-******
-
-<div class="row">
-
-<div class="col-xs-6"><picture>![](http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg)</picture> </div>
-
-<div class="col-xs-6"><picture>![](http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif/full.jpg)</picture> </div>
-
-<div class="col-xs-6"><picture>![](http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif/full.jpg)</picture> </div>
-
-<div class="col-xs-6"><picture>![](http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg)</picture> </div>
-
-</div>
+![](http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg)
+![](http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif/full.jpg)
+![](http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif/full.jpg)
+![](http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg)
