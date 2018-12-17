@@ -198,7 +198,7 @@ def startScraping():
     print('FINISHED')
 
 
-startScraping()
+# startScraping()
 
 #get_ipython().system('jupyter nbconvert --to=python mission_to_mars-Copy1.ipynb')
 
